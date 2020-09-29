@@ -8,7 +8,6 @@ group :development do
   gem "test-unit"
 end
 
-gem "yaml"
 gem "httparty"
 gem "pry"
 gem "json"

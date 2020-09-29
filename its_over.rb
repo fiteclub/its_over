@@ -8,24 +8,35 @@ A_lon = -76.196910
 B_lat = 40.396936
 B_lon = -75.3679284
 
-def query_elevationapi(lon, lat)
+def elevation(lon, lat)
   query = 'https://api.elevationapi.com/api/Elevation?lat=' + lat.to_s + '&lon=' + lon.to_s
   json = Net::HTTP.get_response(URI(query)).body
   parsed = JSON.parse(json) 
   if parsed["message"] == "OK"
-    elevation = parsed["geoPoints"][0]["elevation"]
+    elev_return = parsed["geoPoints"][0]["elevation"]
   else
-    elevation = 0
+    elev_return = 0
     return "Error"
   end
-  elevation
+  elev_return
 end
 
-A_elevation = query_elevationapi(A_lon, A_lat)
-B_elevation = query_elevationapi(B_lon, B_lat)
-
-if A_elevation > B_elevation 
-  puts "It's over, B. A has the high ground." 
-elsif B_elevation < A_elevation
-  puts "It's over, A. B has the high ground."
+def high_ground(a_elev, b_elev)
+  if a_elev > b_elev
+    puts "It's over, B. A has the high ground." 
+  elsif a_elev < b_elev
+    puts "It's over, A. B has the high ground."
+  elsif a_elev == b_elev
+    puts "Your footing is equal."
+  else
+    puts "WTF did you do! It's broken!"
+  end
 end
+
+
+A_elevation = elevation(A_lon, A_lat)
+puts A_elevation
+B_elevation = elevation(B_lon, B_lat)
+puts B_elevation
+
+high_ground(A_elevation, B_elevation)

@@ -1,22 +1,31 @@
-require 'yaml'
 require 'httparty'
 require 'pry'
 require 'json'
 
-# Requires a file named .config in the main directory with :
-## mapbox-pk: '<YOUR PUBLIC KEY>'
+A_lat = 39.979059
+A_lon = -76.196910
 
-mapbox_pk = YAML.load_file(".config")
+B_lat = 40.396936
+B_lon = -75.3679284
 
-longitude = 39.9790
-latitude = -76.1965 
+def query_elevationapi(lon, lat)
+  query = 'https://api.elevationapi.com/api/Elevation?lat=' + lat.to_s + '&lon=' + lon.to_s
+  json = Net::HTTP.get_response(URI(query)).body
+  parsed = JSON.parse(json) 
+  if parsed["message"] == "OK"
+    elevation = parsed["geoPoints"][0]["elevation"]
+  else
+    elevation = 0
+    return "Error"
+  end
+  elevation
+end
 
-query = 'https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/' + longitude.to_s + ',' + latitude.to_s + '.json?layers=contour&limit=50&access_token=' + mapbox_pk["mapbox-pk"]
+A_elevation = query_elevationapi(A_lon, A_lat)
+B_elevation = query_elevationapi(B_lon, B_lat)
 
-json = Net::HTTP.get_response(URI(query)).body
-
-JSON.parse(json)
-
-binding.pry
-puts json
-puts "done"
+if A_elevation > B_elevation 
+  puts "It's over, B. A has the high ground." 
+elsif B_elevation < A_elevation
+  puts "It's over, A. B has the high ground."
+end

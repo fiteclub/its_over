@@ -4,12 +4,12 @@ Determine who has the high ground, given two locations.
 ## Requirements
 
 + [Mapbox](https://www.mapbox.com/) account
-+ Default public token found at [https://account.mapbox.com/](https://account.mapbox.com/)
++ _Default public token_ found at [https://account.mapbox.com/](https://account.mapbox.com/)
 + Create a file named **.config** in the main directory with the text:
   ```
   mapbox-pk: 'YOUR PUBLIC TOKEN'
   ```
-  replacing YOUR PUBLIC TOKEN with the _Default public token_ from the previous step. The single quotes '' are required.
+  replacing YOUR PUBLIC TOKEN with the _Default public token_ from the previous step. The single quotes ' are required.
 
 ---
 ![It's over, Anakin](https://media.giphy.com/media/7JsEgDMrziuJd9fFY1/giphy.gif)

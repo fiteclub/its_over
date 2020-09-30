@@ -1,5 +1,13 @@
 require 'sinatra'
 
 get '/' do
-  'hello, world!'
+  erb :index
+end
+
+get '/about' do
+  erb :about
+end
+
+get '/its_over' do
+  erb :its_over
 end

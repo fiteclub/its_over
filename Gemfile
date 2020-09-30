@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
-gemspec
+gem "httparty"
+gem "pry"
+gem "json"
+gem "sinatra"
+gem "rerun"
 
 group :development do
   gem "bundler"
@@ -8,6 +12,10 @@ group :development do
   gem "test-unit"
 end
 
-gem "httparty"
-gem "pry"
-gem "json"
+group :test do
+    gem 'minitest'
+    gem 'minitest-reporters'
+    gem 'rack-test'
+    gem 'rake' 
+    gem 'nokogiri'
+end

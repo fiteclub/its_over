@@ -53,6 +53,7 @@ GEM
     test-unit (3.3.6)
       power_assert
     tilt (2.0.10)
+    yaml (0.1.0)
 
 PLATFORMS
   ruby
@@ -70,6 +71,7 @@ DEPENDENCIES
   rerun
   sinatra
   test-unit
+  yaml
 
 BUNDLED WITH
    2.1.4

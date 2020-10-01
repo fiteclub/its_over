@@ -5,6 +5,7 @@ gem "pry"
 gem "json"
 gem "sinatra"
 gem "rerun"
+gem "yaml"
 
 group :development do
   gem "bundler"

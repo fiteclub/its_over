@@ -1,8 +1,18 @@
 # its_over
 Determine who has the high ground, given two locations.
 
-### Features
 + Uses [elevationapi](https://api.elevationapi.com/index.html) for queries
++ Uses [mapbox](https://www.mapbox.com/) for validation and other geo tasks
+
+## Requirements
+
++ [Mapbox](https://www.mapbox.com/) account
++ Default public token found at [https://account.mapbox.com/](https://account.mapbox.com/)
++ Create a file named **.config** in the main directory with the text:
+  ```
+  mapbox-pk: 'YOUR PUBLIC TOKEN'
+  ```
+  replacing YOUR PUBLIC TOKEN with the _Default public token_ from the previous step. The single quotes '' are required.
 
 ---
 ![It's over, Anakin](https://media.giphy.com/media/7JsEgDMrziuJd9fFY1/giphy.gif)

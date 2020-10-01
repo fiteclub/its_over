@@ -1,8 +1,11 @@
 require 'sinatra'
 require 'yaml'
 
-$apikey = YAML.load_file(".config")["mapbox-pk"]
-
+if defined?ENV['MAPBOX_API'].nil?
+  $apikey = YAML.load_file(".config")["mapbox-pk"]
+else
+  $apikey = ENV['MAPBOX_API']
+end
 
 get '/' do
   erb :index

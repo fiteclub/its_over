@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'yaml'
 
-if defined?ENV['MAPBOX_API'].nil?
+if ENV['MAPBOX_API'].nil?
   $apikey = YAML.load_file(".config")["mapbox-pk"]
 else
   $apikey = ENV['MAPBOX_API']
